@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AniBlog - Your premier destination for anime news, reviews, and community discussions. Stay updated with the latest in anime and manga culture.">
+    <meta name="keywords" content="anime, manga, blog, reviews, news, community, japan, otaku">
+    <meta name="author" content="AniBlog Team">
+    <meta property="og:title" content="AniBlog - Anime News & Community">
+    <meta property="og:description" content="Your premier destination for anime news, reviews, and community discussions.">
+    <meta property="og:type" content="website">
+    <title>AniBlog | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            light: '#6366f1',
+                            dark: '#4f46e5',
+                        },
+                        secondary: {
+                            light: '#f43f5e',
+                            dark: '#e11d48',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+        
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg, #6366f1, #f43f5e);
+        }
+        
+        .anime-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .anime-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .anime-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-dark-900 dark:text-gray-200 font-sans transition-colors duration-300">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-dark-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-light to-secondary-light flex items-center justify-center">
+                        <i class="fas fa-play text-white"></i>
+                    </div>
+                    <a href="#" class="text-xl font-heading font-bold gradient-text">AniBlog</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="font-medium hover:text-primary-light dark:hover:text-primary-light transition">Home</a>
+                    <a href="#news" class="font-medium hover:text-primary-light dark:hover:text-primary-light transition">News</a>
+                    <a href="#blogs" class="font-medium hover:text-primary-light dark:hover:text-primary-light transition">Blogs</a>
+                    <a href="#community" class="font-medium hover:text-primary-light dark:hover:text-primary-light transition">Community</a>
+                    <a href="#about" class="font-medium hover:text-primary-light dark:hover:text-primary-light transition">About</a>
+                    
+                    <!-- Search and Theme Toggle -->
+                    <div class="flex items-center space-x-4">
+                        <button id="search-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition">
+                            <i class="fas fa-search text-gray-600 dark:text-gray-300"></i>
+                        </button>
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:block"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Search (Hidden by default) -->
+            <div id="mobile-search" class="mt-3 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Search anime, blogs..." 
+                           class="w-full py-2 pl-10 pr-4 rounded-full border border-gray-300 dark:border-dark-800 bg-white dark:bg-dark-800 focus:outline-none focus:ring-2 focus:ring-primary-light">
+                    <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark-800 border-t border-gray-200 dark:border-dark-800">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="py-2 font-medium">Home</a>
+                <a href="#news" class="py-2 font-medium">News</a>
+                <a href="#blogs" class="py-2 font-medium">Blogs</a>
+                <a href="#community" class="py-2 font-medium">Community</a>
+                <a href="#about" class="py-2 font-medium">About</a>
+                <div class="pt-2 border-t border-gray-200 dark:border-dark-700 flex justify-between">
+                    <button id="mobile-theme-toggle" class="flex items-center space-x-2">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                        <span>Toggle Theme</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-12 md:py-20 bg-gradient-to-br from-primary-light/10 to-secondary-light/10 dark:from-primary-dark/10 dark:to-secondary-dark/10">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">
+                        <span class="gradient-text">Discover</span> the Latest in Anime Culture
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+                        Your premier destination for anime news, reviews, and community discussions. Stay updated with everything anime and manga.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#blogs" class="px-6 py-3 bg-primary-light hover:bg-primary-dark text-white rounded-full font-medium transition shadow-md hover:shadow-lg">
+                            Read Latest Blogs
+                        </a>
+                        <a href="#community" class="px-6 py-3 border border-primary-light text-primary-light dark:text-primary-light hover:bg-primary-light/10 rounded-full font-medium transition">
+                            Join Community
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured News -->
+        <section id="news" class="py-12 md:py-16">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold">
+                        <span class="gradient-text">Featured</span> Anime News
+                    </h2>
+                    <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                        View All <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- News Card 1 -->
+                    <div class="bg-white dark:bg-dark-800 rounded-xl overflow-hidden shadow-md anime-card">
+                        <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                            <i class="fas fa-image text-white text-5xl opacity-50"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="text-xs font-medium px-2 py-1 bg-primary-light/10 text-primary-light rounded">Breaking</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">2 hours ago</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">New Demon Slayer Arc Announced for 2024</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Ufotable confirms production of the Hashira Training Arc with a stunning new trailer.</p>
+                            <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                                Read More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 2 -->
+                    <div class="bg-white dark:bg-dark-800 rounded-xl overflow-hidden shadow-md anime-card">
+                        <div class="h-48 bg-gradient-to-br from-red-400 to-pink-500 flex items-center justify-center">
+                            <i class="fas fa-image text-white text-5xl opacity-50"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="text-xs font-medium px-2 py-1 bg-secondary-light/10 text-secondary-light rounded">Exclusive</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">1 day ago</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Studio Ghibli Announces New Film for 2025</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Hayao Miyazaki returns with an original fantasy story set in a magical forest.</p>
+                            <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                                Read More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 3 -->
+                    <div class="bg-white dark:bg-dark-800 rounded-xl overflow-hidden shadow-md anime-card">
+                        <div class="h-48 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center">
+                            <i class="fas fa-image text-white text-5xl opacity-50"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <span class="text-xs font-medium px-2 py-1 bg-yellow-500/10 text-yellow-500 rounded">Update</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">3 days ago</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">One Piece Anime to Receive Major Animation Upgrade</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">Toei Animation announces Wano Arc will feature enhanced animation quality starting next month.</p>
+                            <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                                Read More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Blogs -->
+        <section id="blogs" class="py-12 md:py-16 bg-gray-100 dark:bg-dark-800">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold">
+                        <span class="gradient-text">Latest</span> Blog Posts
+                    </h2>
+                    <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                        View All <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Featured Blog Post -->
+                    <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-lg anime-card">
+                        <div class="h-64 bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center">
+                            <i class="fas fa-image text-white text-5xl opacity-50"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
+                                    <span class="text-sm font-medium">SakuraAnimeFan</span>
+                                </div>
+                                <span class="text-xs text-gray-500 dark:text-gray-400">May 15, 2023</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3">Why Attack on Titan's Finale Redefined Anime Storytelling</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">An in-depth analysis of how Hajime Isayama's masterpiece concluded its decade-long narrative and what it means for the anime industry moving forward...</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Analysis</span>
+                                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Attack on Titan</span>
+                                <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Editorial</span>
+                            </div>
+                            <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                                Continue Reading <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Posts List -->
+                    <div class="space-y-6">
+                        <!-- Blog Post 1 -->
+                        <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-md anime-card">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
+                                        <span class="text-sm font-medium">MangaMaster</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">May 12, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Top 5 Underrated Manga You Should Read in 2023</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-3">Discover hidden gems in the manga world that deserve more attention...</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Manga</span>
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Recommendations</span>
+                                    </div>
+                                    <a href="#" class="text-sm text-primary-light hover:text-primary-dark font-medium">
+                                        Read
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Blog Post 2 -->
+                        <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-md anime-card">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
+                                        <span class="text-sm font-medium">AnimeCritic</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">May 8, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">The Evolution of Anime Openings: From 90s to Now</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-3">How anime openings have transformed over the decades and what makes a memorable OP...</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Retro</span>
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Music</span>
+                                    </div>
+                                    <a href="#" class="text-sm text-primary-light hover:text-primary-dark font-medium">
+                                        Read
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Blog Post 3 -->
+                        <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-md anime-card">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
+                                        <span class="text-sm font-medium">OtakuTraveler</span>
+                                    </div>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">May 5, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-2">Anime Pilgrimage: Visiting Real-Life Locations Featured in Your Favorite Shows</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-3">A guide to the real-world locations that inspired anime settings across Japan...</p>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Travel</span>
+                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Guide</span>
+                                    </div>
+                                    <a href="#" class="text-sm text-primary-light hover:text-primary-dark font-medium">
+                                        Read
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="py-12 md:py-16">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold">
+                        <span class="gradient-text">Community</span> Discussions
+                    </h2>
+                    <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                        View All <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Trending Topics -->
+                    <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-fire text-secondary-light mr-2"></i> Trending Topics
+                        </h3>
+                        <div class="space-y-4">
+                            <!-- Topic 1 -->
+                            <div class="flex items-start space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Is the anime industry moving towards shorter seasons?</h4>
+                                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1 space-x-3">
+                                        <span>45 comments</span>
+                                        <span>2h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Topic 2 -->
+                            <div class="flex items-start space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-pink-500 flex items-center justify-center text-white">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">What's your favorite anime soundtrack of all time?</h4>
+                                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1 space-x-3">
+                                        <span>82 comments</span>
+                                        <span>5h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Topic 3 -->
+                            <div class="flex items-start space-x-3">
+                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-white">
+                                    <i class="fas fa-comment"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Recommendations for anime similar to Steins;Gate?</h4>
+                                    <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mt-1 space-x-3">
+                                        <span>36 comments</span>
+                                        <span>1d ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="mt-4 inline-block text-primary-light hover:text-primary-dark font-medium flex items-center">
+                            Join Discussion <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Create Post -->
+                    <div class="bg-white dark:bg-dark-800 rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-edit text-primary-light mr-2"></i> Start a Discussion
+                        </h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="post-title" class="block text-sm font-medium mb-2">Title</label>
+                                <input type="text" id="post-title" placeholder="What's your topic?" 
+                                       class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-dark-700 bg-white dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-light">
+                            </div>
+                            <div class="mb-4">
+                                <label for="post-content" class="block text-sm font-medium mb-2">Content</label>
+                                <textarea id="post-content" rows="3" placeholder="Share your thoughts with the community..." 
+                                          class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-dark-700 bg-white dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-light"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label for="post-tags" class="block text-sm font-medium mb-2">Tags (optional)</label>
+                                <input type="text" id="post-tags" placeholder="e.g. discussion, recommendation" 
+                                       class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-dark-700 bg-white dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-light">
+                            </div>
+                            <button type="submit" class="w-full py-2 bg-primary-light hover:bg-primary-dark text-white rounded-lg font-medium transition flex items-center justify-center">
+                                <span id="post-button-text">Post Discussion</span>
+                                <div id="post-loading" class="loading-spinner ml-2 hidden"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-12 md:py-16 bg-gradient-to-br from-primary-light/10 to-secondary-light/10 dark:from-primary-dark/10 dark:to-secondary-dark/10">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl font-heading font-bold mb-4">
+                        Stay Updated with <span class="gradient-text">AniBlog</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Subscribe to our newsletter for weekly anime news, blog highlights, and community spotlights delivered straight to your inbox.
+                    </p>
+                    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <input type="email" placeholder="Your email address" 
+                               class="flex-grow px-4 py-3 rounded-lg border border-gray-300 dark:border-dark-700 bg-white dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-primary-light">
+                        <button type="submit" class="px-6 py-3 bg-primary-light hover:bg-primary-dark text-white rounded-lg font-medium transition shadow-md hover:shadow-lg">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-dark-800 border-t border-gray-200 dark:border-dark-700">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-primary-light to-secondary-light mr-2"></div>
+                        AniBlog
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Your premier destination for anime news, reviews, and community discussions since 2018.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light transition">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Home</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">News</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Blogs</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Community</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">About</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">News</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Reviews</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Recommendations</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Analysis</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">Community</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div id="about">
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-gray-500 mr-2"></i>
+                            <a href="mailto:contact@aniblog.example" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">contact@aniblog.example</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-globe text-gray-500 mr-2"></i>
+                            <a href="#" class="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">aniblog.example</a>
+                        </li>
+                    </ul>
+                    <div class="mt-6">
+                        <button id="footer-theme-toggle" class="text-sm flex items-center space-x-2 text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-light transition">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:block"></i>
+                            <span>Toggle Theme</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 dark:border-dark-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2023 AniBlog. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light text-sm transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light text-sm transition">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-primary-light dark:hover:text-primary-light text-sm transition">DMCA</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary-light hover:bg-primary-dark text-white shadow-lg flex items-center justify-center transition-all opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Theme Toggle
+        const themeToggleBtns = document.querySelectorAll('#theme-toggle, #mobile-theme-toggle, #footer-theme-toggle');
+        
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            });
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Search Toggle (Mobile)
+        const searchToggle = document.getElementById('search-toggle');
+        const mobileSearch = document.getElementById('mobile-search');
+        
+        searchToggle?.addEventListener('click', () => {
+            mobileSearch.classList.toggle('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Form Submission Loading State
+        const postForm = document.querySelector('#community form');
+        const postButtonText = document.getElementById('post-button-text');
+        const postLoading = document.getElementById('post-loading');
+        
+        if (postForm) {
+            postForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                postButtonText.textContent = 'Posting...';
+                postLoading.classList.remove('hidden');
+                
+                // Simulate API call
+                setTimeout(() => {
+                    postButtonText.textContent = 'Posted!';
+                    postLoading.classList.add('hidden');
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        postButtonText.textContent = 'Post Discussion';
+                        postForm.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
