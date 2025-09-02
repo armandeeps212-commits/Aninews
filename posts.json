@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Naruto Episode 1",
+    "summary": "A small summary of episode 1",
+    "content": "This is the full content of Naruto episode 1...",
+    "date": "2025-09-02"
+  },
+  {
+    "id": 2,
+    "title": "One Piece Episode 1",
+    "summary": "A short summary for One Piece episode 1",
+    "content": "Full content for One Piece episode 1 goes here...",
+    "date": "2025-09-01"
+  }
+]
