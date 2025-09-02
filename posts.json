@@ -2,15 +2,22 @@
   {
     "id": 1,
     "title": "Naruto Episode 1",
-    "summary": "A small summary of episode 1",
-    "content": "This is the full content of Naruto episode 1...",
+    "summary": "A small summary of episode 1.",
+    "content": "This is the full content of Naruto episode 1. Here you can write a long explanation or recap of the episode.",
     "date": "2025-09-02"
   },
   {
     "id": 2,
     "title": "One Piece Episode 1",
-    "summary": "A short summary for One Piece episode 1",
-    "content": "Full content for One Piece episode 1 goes here...",
+    "summary": "A short summary for One Piece episode 1.",
+    "content": "Full content for One Piece episode 1 goes here. You can write as much detail as you want.",
     "date": "2025-09-01"
+  },
+  {
+    "id": 3,
+    "title": "Attack on Titan Episode 1",
+    "summary": "Titans break the wall in this shocking episode.",
+    "content": "In this episode, humanity faces its greatest fear as Titans invade through the broken wall. Eren, Mikasa, and Armin witness the destruction and tragedy that follows.",
+    "date": "2025-08-30"
   }
 ]
