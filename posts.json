@@ -1,44 +1,92 @@
 [
   {
-    "title": "New Demon Slayer Arc Announced for 2024",
-    "description": "Ufotable confirms production of the Hashira Training Arc with a stunning new trailer.",
-    "link": "blog1.html",
-    "image": "images/demon-slayer.jpg",
-    "isNew": true
+    "title": "Tokyo Revengers: Tenjiku Arc – Season 2",
+    "genre": "Action, Drama, Time Travel",
+    "releaseDate": "July 3, 2025",
+    "studio": "LIDENFILMS",
+    "description": "The saga of gangs, friendship, and time-traveling battles continues! Fans are eager to see Takemichi confront the Tenjiku gang and protect his friends.",
+    "image": "images/tokyo-revengers.jpg",
+    "trailer": "#"
   },
   {
-    "title": "Studio Ghibli Announces Magical 2025 Film",
-    "description": "Hayao Miyazaki returns with an original fantasy story set in a mystical forest.",
-    "link": "blog2.html",
-    "image": "images/ghibli-film.jpg",
-    "isNew": false
+    "title": "My Dress-Up Darling – Season 2",
+    "genre": "Romance, Slice of Life",
+    "releaseDate": "July 10, 2025",
+    "studio": "CloverWorks",
+    "description": "The heartwarming and funny adventures of Wakana and Marin continue! Expect more cosplay, laughs, and adorable moments.",
+    "image": "images/my-dress-up-darling.jpg",
+    "trailer": "#"
   },
   {
-    "title": "One Piece Animation Gets Major Upgrade",
-    "description": "Toei Animation announces the Wano Arc will feature enhanced animation quality starting next month.",
-    "link": "blog3.html",
+    "title": "KAIJU No. 8 – Season 2",
+    "genre": "Action, Fantasy, Adventure",
+    "releaseDate": "July 5, 2025",
+    "studio": "Production I.G",
+    "description": "Kafka continues his battle against monstrous kaiju while uncovering shocking secrets about the organization.",
+    "image": "images/kaiju-8.jpg",
+    "trailer": "#"
+  },
+  {
+    "title": "DAN DA DAN – Season 2",
+    "genre": "Comedy, Romance, Supernatural",
+    "releaseDate": "July 12, 2025",
+    "studio": "OLM",
+    "description": "This supernatural romantic comedy returns with more hilarious twists, adventures, and heart-fluttering moments between the main characters.",
+    "image": "images/dan-da-dan.jpg",
+    "trailer": "#"
+  },
+  {
+    "title": "The Fragrant Flower Blooms with Dignity",
+    "genre": "Slice of Life, Drama, Romance",
+    "releaseDate": "July 7, 2025",
+    "studio": "Kyoto Animation",
+    "description": "A story of love, growth, and blossoming friendships. Beautiful animation and emotional storytelling make this a must-watch.",
+    "image": "images/fragrant-flower.jpg",
+    "trailer": "#"
+  },
+  {
+    "title": "One Piece – Wano Arc Continuation",
+    "genre": "Adventure, Fantasy, Action",
+    "releaseDate": "July 15, 2025",
+    "studio": "Toei Animation",
+    "description": "Luffy and the crew face new challenges in Wano, with thrilling battles, heartwarming bonds, and jaw-dropping plot twists.",
     "image": "images/one-piece.jpg",
-    "isNew": true
+    "trailer": "#"
   },
   {
-    "title": "Attack on Titan Final Season Secrets",
-    "description": "Explore the hidden plot twists and behind-the-scenes stories from AoT's final episodes.",
-    "link": "blog4.html",
-    "image": "images/attack-on-titan.jpg",
-    "isNew": false
+    "title": "Demon Slayer – Swordsmith Village Arc",
+    "genre": "Action, Supernatural, Fantasy",
+    "releaseDate": "July 20, 2025",
+    "studio": "Ufotable",
+    "description": "Tanjiro and friends continue their fight against the demons with breathtaking battles, emotional moments, and stunning animation.",
+    "image": "images/demon-slayer.jpg",
+    "trailer": "#"
   },
   {
-    "title": "Jujutsu Kaisen Season 2 Trailer Breakdown",
-    "description": "We dissect every detail from the highly anticipated Jujutsu Kaisen trailer.",
-    "link": "blog5.html",
-    "image": "images/jujutsu-kaisen.jpg",
-    "isNew": true
+    "title": "Re:Zero – New Arc",
+    "genre": "Isekai, Drama, Fantasy",
+    "releaseDate": "July 18, 2025",
+    "studio": "White Fox",
+    "description": "Subaru faces new challenges in this gripping continuation of Re:Zero. Fans are excited for intense drama and time-loop twists.",
+    "image": "images/rezero.jpg",
+    "trailer": "#"
   },
   {
-    "title": "Spy x Family: Top 10 Fan Theories",
-    "description": "Discover the most mind-blowing fan theories about the Spy x Family universe.",
-    "link": "blog6.html",
-    "image": "images/spy-family.jpg",
-    "isNew": false
+    "title": "Chainsaw Man – Part 2",
+    "genre": "Action, Horror, Supernatural",
+    "releaseDate": "July 25, 2025",
+    "studio": "MAPPA",
+    "description": "Denji returns with even more intense fights, shocking twists, and dark humor. Fans are hyped for the next explosive arcs.",
+    "image": "images/chainsaw-man.jpg",
+    "trailer": "#"
+  },
+  {
+    "title": "Solo Leveling – Anime Adaptation",
+    "genre": "Action, Fantasy, Isekai",
+    "releaseDate": "July 28, 2025",
+    "studio": "A-1 Pictures",
+    "description": "One of the most awaited adaptations of all time! Fans are ready to see Sung Jin-Woo’s journey come to life with epic battles and stunning visuals.",
+    "image": "images/solo-leveling.jpg",
+    "trailer": "#"
   }
 ]
