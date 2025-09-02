@@ -1,23 +1,44 @@
 [
   {
-    "id": 1,
-    "title": "Naruto Episode 1",
-    "summary": "A small summary of episode 1.",
-    "content": "This is the full content of Naruto episode 1. Here you can write a long explanation or recap of the episode.",
-    "date": "2025-09-02"
+    "title": "New Demon Slayer Arc Announced for 2024",
+    "description": "Ufotable confirms production of the Hashira Training Arc with a stunning new trailer.",
+    "link": "blog1.html",
+    "image": "images/demon-slayer.jpg",
+    "isNew": true
   },
   {
-    "id": 2,
-    "title": "One Piece Episode 1",
-    "summary": "A short summary for One Piece episode 1.",
-    "content": "Full content for One Piece episode 1 goes here. You can write as much detail as you want.",
-    "date": "2025-09-01"
+    "title": "Studio Ghibli Announces Magical 2025 Film",
+    "description": "Hayao Miyazaki returns with an original fantasy story set in a mystical forest.",
+    "link": "blog2.html",
+    "image": "images/ghibli-film.jpg",
+    "isNew": false
   },
   {
-    "id": 3,
-    "title": "Attack on Titan Episode 1",
-    "summary": "Titans break the wall in this shocking episode.",
-    "content": "In this episode, humanity faces its greatest fear as Titans invade through the broken wall. Eren, Mikasa, and Armin witness the destruction and tragedy that follows.",
-    "date": "2025-08-30"
+    "title": "One Piece Animation Gets Major Upgrade",
+    "description": "Toei Animation announces the Wano Arc will feature enhanced animation quality starting next month.",
+    "link": "blog3.html",
+    "image": "images/one-piece.jpg",
+    "isNew": true
+  },
+  {
+    "title": "Attack on Titan Final Season Secrets",
+    "description": "Explore the hidden plot twists and behind-the-scenes stories from AoT's final episodes.",
+    "link": "blog4.html",
+    "image": "images/attack-on-titan.jpg",
+    "isNew": false
+  },
+  {
+    "title": "Jujutsu Kaisen Season 2 Trailer Breakdown",
+    "description": "We dissect every detail from the highly anticipated Jujutsu Kaisen trailer.",
+    "link": "blog5.html",
+    "image": "images/jujutsu-kaisen.jpg",
+    "isNew": true
+  },
+  {
+    "title": "Spy x Family: Top 10 Fan Theories",
+    "description": "Discover the most mind-blowing fan theories about the Spy x Family universe.",
+    "link": "blog6.html",
+    "image": "images/spy-family.jpg",
+    "isNew": false
   }
 ]
