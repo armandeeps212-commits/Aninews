@@ -277,7 +277,7 @@
 
   async function loadBlogs() {
     try {
-      const response = await fetch('blogs.json'); // replace with your JSON file path or API
+      const response = await fetch('posts.json'); // replace with your JSON file path or API
       const blogData = await response.json();
 
       blogData.forEach(blog => {
