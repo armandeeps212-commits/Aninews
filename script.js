@@ -4,7 +4,7 @@
 fetch("posts.json")
   .then((response) => response.json())
   .then((posts) => {
-    const blogContainer = document.getElementById("blog-posts");
+    const blogContainer = document.getElementById("blog-container");
     blogContainer.innerHTML = "";
 
     posts.forEach((post) => {
