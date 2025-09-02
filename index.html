@@ -278,82 +278,24 @@
                     </div>
                     
                     <!-- Blog Posts List -->
-                    <div class="space-y-6">
-                        <!-- Blog Post 1 -->
-                        <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-md anime-card">
-                            <div class="p-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
-                                        <span class="text-sm font-medium">MangaMaster</span>
-                                    </div>
-                                    <span class="text-xs text-gray-500 dark:text-gray-400">May 12, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">Top 5 Underrated Manga You Should Read in 2023</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-3">Discover hidden gems in the manga world that deserve more attention...</p>
-                                <div class="flex justify-between items-center">
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Manga</span>
-                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Recommendations</span>
-                                    </div>
-                                    <a href="#" class="text-sm text-primary-light hover:text-primary-dark font-medium">
-                                        Read
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Blog Post 2 -->
-                        <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-md anime-card">
-                            <div class="p-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
-                                        <span class="text-sm font-medium">AnimeCritic</span>
-                                    </div>
-                                    <span class="text-xs text-gray-500 dark:text-gray-400">May 8, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">The Evolution of Anime Openings: From 90s to Now</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-3">How anime openings have transformed over the decades and what makes a memorable OP...</p>
-                                <div class="flex justify-between items-center">
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Retro</span>
-                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Music</span>
-                                    </div>
-                                    <a href="#" class="text-sm text-primary-light hover:text-primary-dark font-medium">
-                                        Read
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Blog Post 3 -->
-                        <div class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-md anime-card">
-                            <div class="p-6">
-                                <div class="flex items-center justify-between mb-3">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-dark-600"></div>
-                                        <span class="text-sm font-medium">OtakuTraveler</span>
-                                    </div>
-                                    <span class="text-xs text-gray-500 dark:text-gray-400">May 5, 2023</span>
-                                </div>
-                                <h3 class="text-xl font-bold mb-2">Anime Pilgrimage: Visiting Real-Life Locations Featured in Your Favorite Shows</h3>
-                                <p class="text-gray-600 dark:text-gray-300 mb-3">A guide to the real-world locations that inspired anime settings across Japan...</p>
-                                <div class="flex justify-between items-center">
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Travel</span>
-                                        <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-dark-600 rounded-full">Guide</span>
-                                    </div>
-                                    <a href="#" class="text-sm text-primary-light hover:text-primary-dark font-medium">
-                                        Read
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                <!-- Latest Blogs -->
+<section id="blogs" class="py-12 md:py-16 bg-gray-100 dark:bg-dark-800">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold">
+        <span class="gradient-text">Latest</span> Blog Posts
+      </h2>
+      <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+        View All <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+
+    <!-- Blog container where JS will insert posts -->
+    <div id="blog-container" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Blog cards will be loaded here dynamically -->
+    </div>
+  </div>
+</section>
 
         <!-- Community Section -->
         <section id="community" class="py-12 md:py-16">
@@ -361,8 +303,7 @@
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-2xl md:text-3xl font-heading font-bold">
                         <span class="gradient-text">Community</span> Discussions
-                    </h2>
-                    <a href="#" class="text-primary-light hover:text-primary-dark font-medium flex items-center">
+                    ems-center">
                         View All <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
